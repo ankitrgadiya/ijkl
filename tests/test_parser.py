@@ -4,6 +4,7 @@ sys.path.append('../ijkl')
 from ijkl.parser import include, parse, WrongSyntax
 import unittest
 
+
 class parser_parse(unittest.TestCase):
     """
     Tests parse function from parser module
@@ -46,10 +47,14 @@ class parser_include(unittest.TestCase):
         self.assertEqual(include('valid', folder='tests/files'),
                 'set $mod Mod4\n')
 
+    def test_valid_file_with_path(self):
+        self.assertEqual(include('tests/files/valid'), 'set $mod Mod4\n')
+
     @unittest.expectedFailure
     def test_valid_file_with_include(self):
         self.assertEqual(include('valid_with_include', folder='tests/files'),
                 'set $mod Mod4\n')
+
 
 if __name__ == "__main__":
     unittest.main()
