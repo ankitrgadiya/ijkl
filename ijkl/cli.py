@@ -1,14 +1,22 @@
 from . import parse
+import sys
 import argparse
 
-def main():
-    cli_arguments = argparse.ArgumentParser()
-    cli_arguments.add_argument('template', help='Template file to process')
-    cli_arguments.add_argument('-o', '--output', default='config.out',
+def parse_args(args):
+    """
+    Parses arguments
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument('template', help='Template file to process')
+    parser.add_argument('-o', '--output', default='config.out',
             help='Output file')
-    cli_arguments.add_argument('-P', '--parent', default='~/.config/i3',
+    parser.add_argument('-P', '--parent', default='~/.config/i3',
             type=str, help='Parent directory to look files in')
-    args = cli_arguments.parse_args()
+    return parser.parse_args(args)
+
+
+def main():
+    args = parse_args(sys.argv[1:])
 
     try:
         template = open(args.template, 'r')
