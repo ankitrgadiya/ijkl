@@ -6,7 +6,7 @@ def parse_args(args):
     """
     Parses arguments
     """
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog='ijkl')
     parser.add_argument('template', help='Template file to process')
     parser.add_argument('-o', '--output', default='config.out',
             help='Output file')

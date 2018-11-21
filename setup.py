@@ -9,7 +9,7 @@ setup(name='ijkl',
       license='BSD 3-Clause',
       packages=find_packages(),
       entry_points={
-          'console_scripts': ['ijkl=ijkl.cli:main']
+          'console_scripts': ['ijkl=ijkl:main']
           },
       classifiers=[
           "Development Status :: 3 - Alpha",
