@@ -1,0 +1,23 @@
+language: python
+
+python:
+- '3.4'
+- '3.5'
+- '3.6'
+
+before_install:
+- pip install pytest pytest-cov codecov
+
+script:
+- py.test --cov=ijkl tests/ -v
+
+after_success:
+- codecov
+
+deploy:
+  provider: pypi
+  user: ankitrgadiya
+  password:
+    secure: WGlNhr8wgcsumA3zgdZN7FAFopwHuwNlpdXBGjtPOOiL8EbPaJ1lzs03G6IagpWCO8LlKv/Hf6KwBAekiJrhfINlqCtVugDwFzwoQY8BqU/j2cz2gTe7s8sEgyLNLDihvuplWj20pElIxCq+5Gf+Dy4I0o/548bZLB2gddintzcAVSiNO7vW8GZB4NT6jthtR/1k4Ae8B/r1SwzwK5KxHEN1bPO5hj9zNpb/ZXCMBmd+uq5Jqt7FfeixE1sxXJ0/wDj6bIgkDgkRGXoBImEPZPHZiZ1CDH6vNpzXtJ0HofaOjWuEkMBdPNwP0YozvmOnvVZ4/EchBCtiU7mtRa864wQYaGH2/G30ipAFVM/WMxDebbTwJhsyIQtm8JjybolneTy6uH8wFsw6JQlFz/V6/CbXEfBV9787E+W8BGzmYUWID5u+LCxNllpOctDJjgKDzhWEM0IOSqQikmikuFfov4DkCcMBgertuZw0aOWBsZYovlweOQ70O5PALvc/0wsPKeGx2H7gCXtXKtpEPXHMNp7OwIihcEPHUK1eptxgQEoEX/WHWarT5ZNeCTHBG9Dx48L74Vut7oco5gRqDKMzF0KrgLLQizTV5FTkeUx9L7lEAPxidZNzQ2+tu6tMXoY7XjIDiteuN58ycrxTKmbXEl0O5zedBVdW8yZ0pe29o8s=
+  on:
+    tags: true
